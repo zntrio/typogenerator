@@ -19,6 +19,7 @@ func main() {
 		strategy.Transposition,
 		strategy.Prefix,
 		strategy.Hyphenation,
+		strategy.Replace(mapping.French),
 		strategy.DoubleHit(mapping.French),
 		strategy.Similar(mapping.French),
 	}

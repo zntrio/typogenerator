@@ -7,8 +7,8 @@ import (
 	"zenithar.org/go/typogenerator/strategy"
 )
 
-func TestSimilar(t *testing.T) {
-	out, err := strategy.Similar(mapping.French).Generate("zenithar.org")
+func TestReplace(t *testing.T) {
+	out, err := strategy.Replace(mapping.French).Generate("zenithar.org")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
@@ -18,7 +18,7 @@ func TestSimilar(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 17 {
+	if len(out) != 77 {
 		t.FailNow()
 	}
 }
