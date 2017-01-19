@@ -6,8 +6,8 @@ import (
 	"zenithar.org/go/typogenerator/strategy"
 )
 
-func TestInsertion(t *testing.T) {
-	out, err := strategy.Insertion.Generate("zemithar.org")
+func TestHyphenation(t *testing.T) {
+	out, err := strategy.Hyphenation.Generate("zemithar.org")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
@@ -17,7 +17,7 @@ func TestInsertion(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 4 {
+	if len(out) != 6 {
 		t.FailNow()
 	}
 }

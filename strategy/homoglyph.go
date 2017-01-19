@@ -47,7 +47,6 @@ func (s *homoglyphStrategy) Generate(domain string) ([]string, error) {
 				if repList, ok := glyph[c]; ok {
 					for _, g := range repList {
 						win = fmt.Sprintf("%s%s%s", win[:j], g, win[j+1:])
-
 						if len(g) > 1 {
 							j += len(g) - 1
 						}
