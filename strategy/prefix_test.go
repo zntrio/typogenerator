@@ -17,7 +17,7 @@ func TestPrefix(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 2 {
+	if len(out) != 14 {
 		t.FailNow()
 	}
 }

@@ -27,6 +27,18 @@ func init() {
 		prefixes: []string{
 			"www",
 			"www-",
+			"mail",
+			"mail-",
+			"login",
+			"login-",
+			"auth",
+			"auth-",
+			"ftp",
+			"ftp-",
+			"smtp",
+			"smtp-",
+			"imap",
+			"imap-",
 		},
 	}
 }
