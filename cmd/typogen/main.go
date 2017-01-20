@@ -3,12 +3,24 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
+
+	"golang.org/x/net/idna"
 
 	"zenithar.org/go/typogenerator"
 	"zenithar.org/go/typogenerator/mapping"
 	"zenithar.org/go/typogenerator/strategy"
+
+	"github.com/namsral/flag"
 )
+
+var (
+	input    = flag.String("s", "zenithar", "Defines string to alternate")
+	punycode = flag.Bool("punycode", false, "Exports as punycode")
+)
+
+func init() {
+	flag.Parse()
+}
 
 func main() {
 	all := []strategy.Strategy{
@@ -35,12 +47,23 @@ func main() {
 		strategy.Similar(mapping.German),
 	}
 
-	domains, err := typogenerator.Fuzz(os.Args[1], all...)
+	domains, err := typogenerator.Fuzz(*input, all...)
 	if err != nil {
 		log.Fatal("Unable to generate domains.")
 	}
 
 	for _, domain := range domains {
-		fmt.Println(domain)
+
+		if *punycode {
+			out, err := idna.ToASCII(domain)
+			if err != nil {
+				fmt.Println(domain)
+			} else {
+				fmt.Println(out)
+			}
+		} else {
+			fmt.Println(domain)
+		}
+
 	}
 }
