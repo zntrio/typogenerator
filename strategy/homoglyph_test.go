@@ -17,7 +17,7 @@ func TestHomoglyph(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 4 {
+	if len(out) != 87 {
 		t.FailNow()
 	}
 }
