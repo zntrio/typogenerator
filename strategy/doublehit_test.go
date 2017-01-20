@@ -8,7 +8,7 @@ import (
 )
 
 func TestDoubleHit(t *testing.T) {
-	out, err := strategy.DoubleHit(mapping.French).Generate("zenithar.org")
+	out, err := strategy.DoubleHit(mapping.French).Generate("zenithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

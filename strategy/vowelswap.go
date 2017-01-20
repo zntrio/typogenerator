@@ -1,9 +1,6 @@
 package strategy
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 var (
 	VowelSwap Strategy
@@ -18,17 +15,13 @@ func (s *vowelwapStrategy) Generate(domain string) ([]string, error) {
 	res := []string{}
 	vowels := []rune{'a', 'e', 'i', 'o', 'u', 'y'}
 
-	// Split domain and gTLD
-	parts := strings.SplitN(domain, ".", 2)
-
-	dom := []rune(parts[0])
-	tld := []rune(parts[1])
+	dom := []rune(domain)
 
 	for i := 0; i < len(dom); i++ {
 		for _, v := range vowels {
 			switch dom[i] {
 			case 'a', 'e', 'i', 'o', 'u', 'y':
-				res = append(res, fmt.Sprintf("%s%c%s.%s", string(dom[:i]), v, string(dom[i+1:]), string(tld)))
+				res = append(res, fmt.Sprintf("%s%c%s", string(dom[:i]), v, string(dom[i+1:])))
 			default:
 			}
 		}

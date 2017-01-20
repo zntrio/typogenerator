@@ -7,7 +7,7 @@ import (
 )
 
 func TestPrefix(t *testing.T) {
-	out, err := strategy.Prefix.Generate("zemithar.org")
+	out, err := strategy.Prefix.Generate("zemithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

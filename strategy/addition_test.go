@@ -7,7 +7,7 @@ import (
 )
 
 func TestAddition(t *testing.T) {
-	out, err := strategy.Addition.Generate("zenithar.org")
+	out, err := strategy.Addition.Generate("zenithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

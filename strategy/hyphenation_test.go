@@ -7,7 +7,7 @@ import (
 )
 
 func TestHyphenation(t *testing.T) {
-	out, err := strategy.Hyphenation.Generate("zemithar.org")
+	out, err := strategy.Hyphenation.Generate("zemithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

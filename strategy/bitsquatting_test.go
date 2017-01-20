@@ -7,7 +7,7 @@ import (
 )
 
 func TestBitSquatting(t *testing.T) {
-	out, err := strategy.BitSquatting.Generate("zenithar.org")
+	out, err := strategy.BitSquatting.Generate("zenithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

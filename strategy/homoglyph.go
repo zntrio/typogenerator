@@ -2,7 +2,6 @@ package strategy
 
 import (
 	"fmt"
-	"strings"
 
 	"zenithar.org/go/typogenerator/helpers"
 )
@@ -47,11 +46,7 @@ func (s *homoglyphStrategy) Generate(domain string) ([]string, error) {
 		'z': {"ｚ"},
 	}
 
-	// Split domain and gTLD
-	parts := strings.SplitN(domain, ".", 2)
-
-	dom := []rune(parts[0])
-	tld := []rune(parts[1])
+	dom := []rune(domain)
 
 	for ws := range dom {
 		for i := 0; i < ((len(dom) - ws) + 1); i++ {
@@ -68,7 +63,7 @@ func (s *homoglyphStrategy) Generate(domain string) ([]string, error) {
 						if len(g) > 1 {
 							j += len(g) - 1
 						}
-						res = append(res, fmt.Sprintf("%s%s%s.%s", string(dom[:i]), string(win), string(dom[i+ws:]), string(tld)))
+						res = append(res, fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:])))
 					}
 				}
 				j++

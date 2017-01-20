@@ -7,7 +7,7 @@ import (
 )
 
 func TestTransposition(t *testing.T) {
-	out, err := strategy.Transposition.Generate("zemithar.org")
+	out, err := strategy.Transposition.Generate("zemithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

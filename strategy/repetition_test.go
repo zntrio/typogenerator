@@ -7,7 +7,7 @@ import (
 )
 
 func TestRepetition(t *testing.T) {
-	out, err := strategy.Repetition.Generate("zemithar.org")
+	out, err := strategy.Repetition.Generate("zemithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

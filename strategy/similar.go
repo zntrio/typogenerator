@@ -2,7 +2,6 @@ package strategy
 
 import (
 	"fmt"
-	"strings"
 
 	"zenithar.org/go/typogenerator/helpers"
 	"zenithar.org/go/typogenerator/mapping"
@@ -24,11 +23,7 @@ func Similar(m mapping.Mapping) Strategy {
 func (s *similarStrategy) Generate(domain string) ([]string, error) {
 	res := []string{}
 
-	// Split domain and gTLD
-	parts := strings.SplitN(domain, ".", 2)
-
-	dom := []rune(parts[0])
-	tld := parts[1]
+	dom := []rune(domain)
 
 	for ws := range dom {
 		for i := 0; i < ((len(dom) - ws) + 1); i++ {
@@ -42,7 +37,7 @@ func (s *similarStrategy) Generate(domain string) ([]string, error) {
 				if len(repList) > 0 {
 					for _, g := range repList {
 						win = []rune(fmt.Sprintf("%s%c%s", string(win[:j]), g, string(win[j+1:])))
-						res = append(res, fmt.Sprintf("%s%s%s.%s", string(dom[:i]), string(win), string(dom[i+ws:]), tld))
+						res = append(res, fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:])))
 					}
 				}
 

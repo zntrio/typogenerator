@@ -1,9 +1,6 @@
 package strategy
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 var (
 	Omission Strategy
@@ -14,17 +11,11 @@ type omissionStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *omissionStrategy) Generate(domain string) ([]string, error) {
+func (s *omissionStrategy) Generate(dom string) ([]string, error) {
 	res := []string{}
 
-	// Split domain and gTLD
-	parts := strings.SplitN(domain, ".", 2)
-
-	dom := parts[0]
-	tld := parts[1]
-
 	for i := range dom {
-		res = append(res, fmt.Sprintf("%s%s.%s", dom[:i], dom[i+1:], tld))
+		res = append(res, fmt.Sprintf("%s%s", dom[:i], dom[i+1:]))
 	}
 
 	return res, nil

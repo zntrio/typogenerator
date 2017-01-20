@@ -7,7 +7,7 @@ import (
 )
 
 func TestOmission(t *testing.T) {
-	out, err := strategy.Omission.Generate("zemithar.org")
+	out, err := strategy.Omission.Generate("zemithar")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
