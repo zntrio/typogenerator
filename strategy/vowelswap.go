@@ -30,6 +30,10 @@ func (s *vowelwapStrategy) Generate(domain string) ([]string, error) {
 	return res, nil
 }
 
+func (s *vowelwapStrategy) GetName() string {
+	return "VowelSwap"
+}
+
 func init() {
 	VowelSwap = &vowelwapStrategy{}
 }

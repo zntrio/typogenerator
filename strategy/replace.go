@@ -36,3 +36,7 @@ func (s *replaceStrategy) Generate(domain string) ([]string, error) {
 
 	return helpers.Dedup(res), nil
 }
+
+func (s *replaceStrategy) GetName() string {
+	return fmt.Sprintf("Replace [%s]", s._mapping.GetName())
+}

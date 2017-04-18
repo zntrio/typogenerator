@@ -27,6 +27,10 @@ func (s *repetitionStrategy) Generate(dom string) ([]string, error) {
 	return res, nil
 }
 
+func (s *repetitionStrategy) GetName() string {
+	return "Repetition"
+}
+
 func init() {
 	Repetition = &repetitionStrategy{}
 }

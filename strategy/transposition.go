@@ -23,6 +23,10 @@ func (s *transpositionStrategy) Generate(dom string) ([]string, error) {
 	return res, nil
 }
 
+func (s *transpositionStrategy) GetName() string {
+	return "Transposition"
+}
+
 func init() {
 	Transposition = &transpositionStrategy{}
 }

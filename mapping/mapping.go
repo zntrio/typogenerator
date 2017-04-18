@@ -4,14 +4,20 @@ package mapping
 type Mapping interface {
 	GetMapping(rune) []rune
 	GetSimilar(rune) []rune
+	GetName() string
 }
 
 type defaultMapping struct {
 	keyboard map[rune][]rune
 	similar  map[rune][]rune
+	name     string
 }
 
 // -----------------------------------------------------------------------------
+
+func (m *defaultMapping) GetName() string {
+	return m.name
+}
 
 func (m *defaultMapping) GetMapping(r rune) []rune {
 	if values, ok := m.keyboard[r]; ok {

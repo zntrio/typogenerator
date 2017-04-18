@@ -22,6 +22,10 @@ func (s *prefixStrategy) Generate(domain string) ([]string, error) {
 	return res, nil
 }
 
+func (s *prefixStrategy) GetName() string {
+	return "Prefix"
+}
+
 func init() {
 	Prefix = &prefixStrategy{
 		prefixes: []string{
@@ -39,6 +43,14 @@ func init() {
 			"smtp-",
 			"imap",
 			"imap-",
+			"account",
+			"account-",
+			"accounts",
+			"accounts-",
+			"users",
+			"users-",
+			"sso",
+			"sso-",
 		},
 	}
 }

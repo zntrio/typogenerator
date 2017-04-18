@@ -7,6 +7,7 @@ var (
 
 func init() {
 	English = &defaultMapping{
+		name: "English",
 		keyboard: map[rune][]rune{
 			'q': {'1', '2', 'w', 'a'},
 			'w': {'2', '3', 'e', 's', 'a', 'q'},

@@ -33,6 +33,10 @@ func (s *bitsquattingStrategy) Generate(dom string) ([]string, error) {
 	return helpers.Dedup(res), nil
 }
 
+func (s *bitsquattingStrategy) GetName() string {
+	return "BitSquatting"
+}
+
 func init() {
 	BitSquatting = &bitsquattingStrategy{}
 }

@@ -48,3 +48,7 @@ func (s *similarStrategy) Generate(domain string) ([]string, error) {
 
 	return helpers.Dedup(res), nil
 }
+
+func (s *similarStrategy) GetName() string {
+	return fmt.Sprintf("Similar [%s]", s._mapping.GetName())
+}

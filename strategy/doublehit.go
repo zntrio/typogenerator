@@ -37,3 +37,7 @@ func (s *doublehitStrategy) Generate(domain string) ([]string, error) {
 
 	return helpers.Dedup(res), nil
 }
+
+func (s *doublehitStrategy) GetName() string {
+	return fmt.Sprintf("DoubleHit [%s]", s._mapping.GetName())
+}

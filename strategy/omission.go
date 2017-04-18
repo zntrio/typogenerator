@@ -21,6 +21,10 @@ func (s *omissionStrategy) Generate(dom string) ([]string, error) {
 	return res, nil
 }
 
+func (s *omissionStrategy) GetName() string {
+	return "Omission"
+}
+
 func init() {
 	Omission = &omissionStrategy{}
 }

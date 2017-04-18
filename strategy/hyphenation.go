@@ -23,6 +23,10 @@ func (s *hyphenationStrategy) Generate(dom string) ([]string, error) {
 	return res, nil
 }
 
+func (s *hyphenationStrategy) GetName() string {
+	return "Hyphenation"
+}
+
 func init() {
 	Hyphenation = &hyphenationStrategy{}
 }

@@ -24,3 +24,7 @@ func (s *additionStrategy) Generate(domain string) ([]string, error) {
 func init() {
 	Addition = &additionStrategy{}
 }
+
+func (s *additionStrategy) GetName() string {
+	return "Addition"
+}

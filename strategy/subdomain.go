@@ -25,6 +25,10 @@ func (s *subdomainStrategy) Generate(domain string) ([]string, error) {
 	return res, nil
 }
 
+func (s *subdomainStrategy) GetName() string {
+	return "Subdomain"
+}
+
 func init() {
 	SubDomain = &subdomainStrategy{}
 }
