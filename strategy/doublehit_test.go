@@ -3,8 +3,8 @@ package strategy_test
 import (
 	"testing"
 
-	"zenithar.org/go/typogenerator/mapping"
-	"zenithar.org/go/typogenerator/strategy"
+	"github.com/Zenithar/typogenerator/mapping"
+	"github.com/Zenithar/typogenerator/strategy"
 )
 
 func TestDoubleHit(t *testing.T) {

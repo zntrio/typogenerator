@@ -3,7 +3,7 @@ package strategy_test
 import (
 	"testing"
 
-	"zenithar.org/go/typogenerator/strategy"
+	"github.com/Zenithar/typogenerator/strategy"
 )
 
 func TestHyphenation(t *testing.T) {
