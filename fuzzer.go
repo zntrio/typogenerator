@@ -1,7 +1,7 @@
 package typogenerator
 
 import (
-	"zenithar.org/go/typogenerator/strategy"
+	"github.com/Zenithar/typogenerator/strategy"
 )
 
 // FuzzResult represents permutations results

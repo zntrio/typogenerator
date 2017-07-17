@@ -3,8 +3,8 @@ package strategy
 import (
 	"fmt"
 
-	"zenithar.org/go/typogenerator/helpers"
-	"zenithar.org/go/typogenerator/mapping"
+	"github.com/Zenithar/typogenerator/helpers"
+	"github.com/Zenithar/typogenerator/mapping"
 )
 
 type doublehitStrategy struct {

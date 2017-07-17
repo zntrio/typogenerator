@@ -3,7 +3,7 @@ package strategy
 import (
 	"fmt"
 
-	"zenithar.org/go/typogenerator/helpers"
+	"github.com/Zenithar/typogenerator/helpers"
 )
 
 var (
