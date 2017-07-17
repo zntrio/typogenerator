@@ -7,7 +7,8 @@ import (
 )
 
 func TestVowelSwap(t *testing.T) {
-	out, err := strategy.VowelSwap.Generate("zenithar")
+	in := "zenithar"
+	out, err := strategy.VowelSwap.Generate(in)
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
@@ -17,7 +18,14 @@ func TestVowelSwap(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 18 {
+	if len(out) != 15 {
 		t.FailNow()
+	}
+
+	for _, res := range out {
+		if res == in {
+			t.Fail()
+			t.Fatal("Vowel swap should not swap a letter with itself!")
+		}
 	}
 }
