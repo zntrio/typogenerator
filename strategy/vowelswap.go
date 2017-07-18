@@ -21,7 +21,9 @@ func (s *vowelwapStrategy) Generate(domain string) ([]string, error) {
 		for _, v := range vowels {
 			switch dom[i] {
 			case 'a', 'e', 'i', 'o', 'u', 'y':
-				res = append(res, fmt.Sprintf("%s%c%s", string(dom[:i]), v, string(dom[i+1:])))
+				if dom[i] != v {
+					res = append(res, fmt.Sprintf("%s%c%s", string(dom[:i]), v, string(dom[i+1:])))
+				}
 			default:
 			}
 		}
