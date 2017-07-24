@@ -12,11 +12,13 @@ type prefixStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *prefixStrategy) Generate(domain string) ([]string, error) {
+func (s *prefixStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	for _, prefix := range s.prefixes {
-		res = append(res, fmt.Sprintf("%s%s", prefix, domain))
+		fuzzed := fmt.Sprintf("%s%s", prefix, domain)
+		fuzzed = combineTLD(fuzzed, tld)
+		res = append(res, fuzzed)
 	}
 
 	return res, nil

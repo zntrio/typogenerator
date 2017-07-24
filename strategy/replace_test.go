@@ -8,7 +8,7 @@ import (
 )
 
 func TestReplace(t *testing.T) {
-	out, err := strategy.Replace(mapping.French).Generate("zenithar")
+	out, err := strategy.Replace(mapping.French).Generate("zenithar", "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

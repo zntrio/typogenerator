@@ -7,7 +7,7 @@ import (
 )
 
 func TestPrefix(t *testing.T) {
-	out, err := strategy.Prefix.Generate("zemithar")
+	out, err := strategy.Prefix.Generate("zenithar", "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
@@ -17,7 +17,7 @@ func TestPrefix(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 14 {
+	if len(out) != 22 {
 		t.FailNow()
 	}
 }

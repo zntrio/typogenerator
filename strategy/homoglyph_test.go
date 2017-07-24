@@ -7,7 +7,7 @@ import (
 )
 
 func TestHomoglyph(t *testing.T) {
-	out, err := strategy.Homoglyph.Generate("zemithar")
+	out, err := strategy.Homoglyph.Generate("zenithar", "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
@@ -17,7 +17,7 @@ func TestHomoglyph(t *testing.T) {
 		t.FailNow()
 	}
 
-	if len(out) != 87 {
+	if len(out) != 90 {
 		t.FailNow()
 	}
 }

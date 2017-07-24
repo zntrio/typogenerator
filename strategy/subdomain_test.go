@@ -7,7 +7,7 @@ import (
 )
 
 func TestSubdomain(t *testing.T) {
-	out, err := strategy.SubDomain.Generate("zenithar")
+	out, err := strategy.SubDomain.Generate("zenithar", "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)

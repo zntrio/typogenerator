@@ -15,12 +15,14 @@ type repetitionStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *repetitionStrategy) Generate(dom string) ([]string, error) {
+func (s *repetitionStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
-	for i, c := range dom {
+	for i, c := range domain {
 		if helpers.IsAlpha(c) {
-			res = append(res, fmt.Sprintf("%s%c%c%s", dom[:i], dom[i], dom[i], dom[i+1:]))
+			fuzzed := fmt.Sprintf("%s%c%c%s", domain[:i], domain[i], domain[i], domain[i+1:])
+			fuzzed = combineTLD(fuzzed, tld)
+			res = append(res, fuzzed)
 		}
 	}
 

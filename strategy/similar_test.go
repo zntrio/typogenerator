@@ -8,7 +8,7 @@ import (
 )
 
 func TestSimilar(t *testing.T) {
-	out, err := strategy.Similar(mapping.French).Generate("zenithar")
+	out, err := strategy.Similar(mapping.French).Generate("zenithar", "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
