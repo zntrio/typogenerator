@@ -15,7 +15,7 @@ type homoglyphStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *homoglyphStrategy) Generate(domain string) ([]string, error) {
+func (s *homoglyphStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 	// `ᅟᅠ         　ㅤǃ！״″＂＄％＆＇﹝（﹞）⁎＊＋‚，‐𐆑－٠۔܁܂․‧。．｡⁄∕╱⫻⫽／ﾉΟοОоՕ𐒆ＯｏΟοОоՕ𐒆Ｏｏا
 	//１２３４５６𐒇７Ց８９։܃܄∶꞉：;；‹＜𐆐＝›＞？＠［＼］＾＿｀
@@ -79,7 +79,9 @@ func (s *homoglyphStrategy) Generate(domain string) ([]string, error) {
 						if len(g) > 1 {
 							j++
 						}
-						res = append(res, fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:])))
+						fuzzed := fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:]))
+						fuzzed = combineTLD(fuzzed, tld)
+						res = append(res, fuzzed)
 					}
 				}
 				j++

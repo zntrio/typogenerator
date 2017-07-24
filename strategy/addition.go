@@ -11,11 +11,13 @@ type additionStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *additionStrategy) Generate(domain string) ([]string, error) {
+func (s *additionStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	for i := 97; i < 123; i++ {
-		res = append(res, fmt.Sprintf("%s%c", domain, i))
+		fuzzed := fmt.Sprintf("%s%c", domain, i)
+		fuzzed = combineTLD(fuzzed, tld)
+		res = append(res, fuzzed)
 	}
 
 	return res, nil

@@ -20,7 +20,7 @@ func Similar(m mapping.Mapping) Strategy {
 
 // -----------------------------------------------------------------------------
 
-func (s *similarStrategy) Generate(domain string) ([]string, error) {
+func (s *similarStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	dom := []rune(domain)
@@ -37,7 +37,9 @@ func (s *similarStrategy) Generate(domain string) ([]string, error) {
 				if len(repList) > 0 {
 					for _, g := range repList {
 						win = []rune(fmt.Sprintf("%s%c%s", string(win[:j]), g, string(win[j+1:])))
-						res = append(res, fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:])))
+						fuzzed := fmt.Sprintf("%s%s%s", string(dom[:i]), string(win), string(dom[i+ws:]))
+						fuzzed = combineTLD(fuzzed, tld)
+						res = append(res, fuzzed)
 					}
 				}
 

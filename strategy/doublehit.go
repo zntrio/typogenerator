@@ -20,7 +20,7 @@ func DoubleHit(m mapping.Mapping) Strategy {
 
 // -----------------------------------------------------------------------------
 
-func (s *doublehitStrategy) Generate(domain string) ([]string, error) {
+func (s *doublehitStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	dom := []rune(domain)
@@ -29,8 +29,13 @@ func (s *doublehitStrategy) Generate(domain string) ([]string, error) {
 		keys := s._mapping.GetMapping(dom[i])
 		if len(keys) > 0 {
 			for _, c := range keys {
-				res = append(res, fmt.Sprintf("%s%c%c%s", string(dom[:i]), c, dom[i], string(dom[i+1:])))
-				res = append(res, fmt.Sprintf("%s%c%c%s", string(dom[:i]), dom[i], c, string(dom[i+1:])))
+				fuzzed := fmt.Sprintf("%s%c%c%s", string(dom[:i]), c, dom[i], string(dom[i+1:]))
+				fuzzed = combineTLD(fuzzed, tld)
+				res = append(res, fuzzed)
+
+				fuzzed = fmt.Sprintf("%s%c%c%s", string(dom[:i]), dom[i], c, string(dom[i+1:]))
+				fuzzed = combineTLD(fuzzed, tld)
+				res = append(res, fuzzed)
 			}
 		}
 	}

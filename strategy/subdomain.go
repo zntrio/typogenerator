@@ -11,14 +11,16 @@ type subdomainStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *subdomainStrategy) Generate(domain string) ([]string, error) {
+func (s *subdomainStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	dom := []rune(domain)
 
 	for i := 1; i < len(dom); i++ {
 		if (rune(dom[i]) != '-' || rune(dom[i]) != '.') && (rune(dom[i-1]) != '-' || rune(dom[i-1]) != '.') {
-			res = append(res, fmt.Sprintf("%s.%s", string(dom[:i]), string(dom[i:])))
+			fuzzed := fmt.Sprintf("%s.%s", string(dom[:i]), string(dom[i:]))
+			fuzzed = combineTLD(fuzzed, tld)
+			res = append(res, fuzzed)
 		}
 	}
 

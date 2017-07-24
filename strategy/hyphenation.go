@@ -11,12 +11,14 @@ type hyphenationStrategy struct {
 
 // -----------------------------------------------------------------------------
 
-func (s *hyphenationStrategy) Generate(dom string) ([]string, error) {
+func (s *hyphenationStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
-	for i := 1; i < len(dom)-1; i++ {
-		if (rune(dom[i]) != '-' || rune(dom[i]) != '.') && (rune(dom[i-1]) != '-' || rune(dom[i-1]) != '.') {
-			res = append(res, fmt.Sprintf("%s-%s", dom[:i], dom[i:]))
+	for i := 1; i < len(domain)-1; i++ {
+		if (rune(domain[i]) != '-' || rune(domain[i]) != '.') && (rune(domain[i-1]) != '-' || rune(domain[i-1]) != '.') {
+			fuzzed := fmt.Sprintf("%s-%s", domain[:i], domain[i:])
+			fuzzed = combineTLD(fuzzed, tld)
+			res = append(res, fuzzed)
 		}
 	}
 

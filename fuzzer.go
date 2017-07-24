@@ -2,6 +2,7 @@ package typogenerator
 
 import (
 	"github.com/Zenithar/typogenerator/strategy"
+	"github.com/weppos/publicsuffix-go/publicsuffix"
 )
 
 // FuzzResult represents permutations results
@@ -11,8 +12,27 @@ type FuzzResult struct {
 	Permutations []string `json:"permutations" yaml:"permutations"`
 }
 
-// Fuzz domain using given strategies
-func Fuzz(domain string, strategies ...strategy.Strategy) ([]FuzzResult, error) {
+// Fuzz string using given strategies
+func Fuzz(name string, strategies ...strategy.Strategy) ([]FuzzResult, error) {
+	return fuzz(name, "", strategies...)
+}
+
+// FuzzDomain splits a domain into (TRD + SLD) + TLD and fuzzes using given strategies
+func FuzzDomain(domain string, strategies ...strategy.Strategy) ([]FuzzResult, error) {
+	parsed, err := publicsuffix.Parse(domain)
+	if err != nil {
+		return []FuzzResult{}, err
+	}
+
+	domain = parsed.SLD
+	if parsed.TRD != "" {
+		domain = parsed.TRD + "." + domain
+	}
+
+	return fuzz(domain, parsed.TLD, strategies...)
+}
+
+func fuzz(domain string, tld string, strategies ...strategy.Strategy) ([]FuzzResult, error) {
 	res := []FuzzResult{}
 	var err error
 
@@ -24,7 +44,7 @@ func Fuzz(domain string, strategies ...strategy.Strategy) ([]FuzzResult, error) 
 				Domain:       domain,
 			}
 
-			domains, err = s.Generate(domain)
+			domains, err = s.Generate(domain, tld)
 			if err != nil {
 				break
 			}

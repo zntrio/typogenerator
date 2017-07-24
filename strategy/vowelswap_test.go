@@ -8,7 +8,7 @@ import (
 
 func TestVowelSwap(t *testing.T) {
 	in := "zenithar"
-	out, err := strategy.VowelSwap.Generate(in)
+	out, err := strategy.VowelSwap.Generate(in, "")
 	if err != nil {
 		t.Fail()
 		t.Fatal("Error should not occurs !", err)
