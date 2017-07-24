@@ -6,6 +6,58 @@ A Golang typosquat generator utilizing various strategies to generate potential 
 
 See files under `cmd/` for example usage.
 
+### Fuzz
+
+```
+all := []strategy.Strategy{
+	strategy.Omission,
+	strategy.Repetition,
+}
+
+results, err := typogenerator.Fuzz("zenithar", all...)
+if err != nil {
+	fmt.Println(err)
+}
+
+for _, r := range results {
+	for _, p := range r.Permutations {
+		fmt.Println(p)
+	}
+}
+
+// enithar
+// znithar
+// zeithar
+// zenthar
+// ...
+```
+
+### FuzzDomain
+
+```
+all := []strategy.Strategy{
+	strategy.Omission,
+	strategy.Repetition,
+}
+
+results, err := typogenerator.FuzzDomain("example.com", all...)
+if err != nil {
+	fmt.Println(err)
+}
+
+for _, r := range results {
+	for _, p := range r.Permutations {
+		fmt.Println(p)
+	}
+}
+
+// xample.com
+// eample.com
+// exmple.com
+// exaple.com
+// ...
+```
+
 ## Fuzzing Algorithms (strategies)
 
 1. **Addition** - Addition of a single character to the end of a string
