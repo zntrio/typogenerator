@@ -8,7 +8,7 @@ See files under `cmd/` for example usage.
 
 ### Fuzz
 
-```
+```go
 all := []strategy.Strategy{
 	strategy.Omission,
 	strategy.Repetition,
@@ -34,7 +34,7 @@ for _, r := range results {
 
 ### FuzzDomain
 
-```
+```go
 all := []strategy.Strategy{
 	strategy.Omission,
 	strategy.Repetition,
@@ -73,6 +73,8 @@ for _, r := range results {
 1. **SubDomain** - Addition of a period `.` between the first and last character in a string
 1. **Transposition** - Swapping of adjacent characters in a string
 1. **VowelSwap** - Swapping of vowels in string with all other vowels
+1. **TLDReplace** - Replaces the TLD with a list of commonly used TLDs. Only works with `FuzzDomain`.
+1. **TLDRepeat** - Repeats the TLD after the domain name. Only works with `FuzzDomain`.
 
 ## Languages
 
