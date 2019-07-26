@@ -15,7 +15,9 @@ func (s *hyphenationStrategy) Generate(domain, tld string) ([]string, error) {
 	res := []string{}
 
 	for i := 1; i < len(domain)-1; i++ {
-		if (rune(domain[i]) != '-' || rune(domain[i]) != '.') && (rune(domain[i-1]) != '-' || rune(domain[i-1]) != '.') {
+		r := rune(domain[i])
+		rp := rune(domain[i-1])
+		if !(r == '-' || r == '.') && !(rp == '-' || rp == '.') {
 			fuzzed := fmt.Sprintf("%s-%s", domain[:i], domain[i:])
 			fuzzed = combineTLD(fuzzed, tld)
 			res = append(res, fuzzed)

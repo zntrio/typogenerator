@@ -17,7 +17,7 @@ func (s *subdomainStrategy) Generate(domain, tld string) ([]string, error) {
 	dom := []rune(domain)
 
 	for i := 1; i < len(dom); i++ {
-		if (rune(dom[i]) != '-' || rune(dom[i]) != '.') && (rune(dom[i-1]) != '-' || rune(dom[i-1]) != '.') {
+		if !(rune(dom[i]) == '-' || rune(dom[i]) == '.') && !(rune(dom[i-1]) == '-' || rune(dom[i-1]) == '.') {
 			fuzzed := fmt.Sprintf("%s.%s", string(dom[:i]), string(dom[i:]))
 			fuzzed = combineTLD(fuzzed, tld)
 			res = append(res, fuzzed)

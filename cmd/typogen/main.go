@@ -7,9 +7,9 @@ import (
 
 	"golang.org/x/net/idna"
 
-	"github.com/Zenithar/typogenerator"
-	"github.com/Zenithar/typogenerator/mapping"
-	"github.com/Zenithar/typogenerator/strategy"
+	"go.zenithar.org/typogenerator"
+	"go.zenithar.org/typogenerator/mapping"
+	"go.zenithar.org/typogenerator/strategy"
 
 	"github.com/hduplooy/gocsv"
 	"github.com/namsral/flag"
@@ -60,12 +60,16 @@ func main() {
 		defer writer.Flush()
 
 		// Write headers
-		writer.Write([]string{"strategy", "domain", "permunation", "idna"})
+		if err := writer.Write([]string{"strategy", "domain", "permunation", "idna"}); err != nil {
+			panic(err)
+		}
 
 		for _, r := range results {
 			for _, p := range r.Permutations {
 				puny, _ := idna.ToASCII(p)
-				writer.Write([]string{r.StrategyName, r.Domain, p, puny})
+				if err := writer.Write([]string{r.StrategyName, r.Domain, p, puny}); err != nil {
+					panic(err)
+				}
 			}
 		}
 	} else {
