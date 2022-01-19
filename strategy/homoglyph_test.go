@@ -30,8 +30,8 @@ func TestHomoglyph(t *testing.T) {
 		t.Fatal("Error should not occurs !", err)
 	}
 
-	if len(out) != 102 {
-		t.Errorf("invalid permutation count, expected %d, got %d", 102, len(out))
+	if len(out) != 121 {
+		t.Errorf("invalid permutation count, expected %d, got %d", 121, len(out))
 		t.FailNow()
 	}
 }
