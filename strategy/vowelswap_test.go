@@ -31,11 +31,8 @@ func TestVowelSwap(t *testing.T) {
 		t.Fatal("Error should not occurs !", err)
 	}
 
-	if len(out) == 0 {
-		t.FailNow()
-	}
-
 	if len(out) != 15 {
+		t.Errorf("invalid permutation count, expected %d, got %d", 15, len(out))
 		t.FailNow()
 	}
 

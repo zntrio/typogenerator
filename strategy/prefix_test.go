@@ -30,11 +30,8 @@ func TestPrefix(t *testing.T) {
 		t.Fatal("Error should not occurs !", err)
 	}
 
-	if len(out) == 0 {
-		t.FailNow()
-	}
-
 	if len(out) != 22 {
+		t.Errorf("invalid permutation count, expected %d, got %d", 22, len(out))
 		t.FailNow()
 	}
 }

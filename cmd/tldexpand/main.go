@@ -30,7 +30,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		for _, tld := range xurls.TLDs {
-			fmt.Println(fmt.Sprintf("%s.%s", scanner.Text(), tld))
+			fmt.Printf("%s.%s\n", scanner.Text(), tld)
 		}
 	}
 

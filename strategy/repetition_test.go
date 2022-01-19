@@ -30,11 +30,8 @@ func TestRepetition(t *testing.T) {
 		t.Fatal("Error should not occurs !", err)
 	}
 
-	if len(out) == 0 {
-		t.FailNow()
-	}
-
 	if len(out) != 8 {
+		t.Errorf("invalid permutation count, expected %d, got %d", 8, len(out))
 		t.FailNow()
 	}
 }

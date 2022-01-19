@@ -22,14 +22,13 @@ import (
 	"log"
 	"os"
 
+	"github.com/hduplooy/gocsv"
+	"github.com/namsral/flag"
 	"golang.org/x/net/idna"
 
 	"zntr.io/typogenerator"
 	"zntr.io/typogenerator/mapping"
 	"zntr.io/typogenerator/strategy"
-
-	"github.com/hduplooy/gocsv"
-	"github.com/namsral/flag"
 )
 
 var (
